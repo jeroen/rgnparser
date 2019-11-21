@@ -1,0 +1,22 @@
+FLAVOR=@flavor@
+LIBGNPATH=@rpath@
+PKG_LIBS=-L../inst/libgnparser -lgnparser -Wl,-rpath,$(LIBGNPATH)
+LIBGN=../inst/libgnparser/libgnparser.so
+LIBURL="https://github.com/GlobalNamesArchitecture/biodiversity/raw/master/clib/$(FLAVOR)/libgnparser.so"
+APIURL="https://github.com/GlobalNamesArchitecture/biodiversity/raw/master/clib/$(FLAVOR)/libgnparser.h"
+
+all: $(SHLIB)
+	@if command -v install_name_tool; then echo "fixxing rpath"; \
+	install_name_tool -change libgnparser.so '@rpath@/libgnparser.so' $(SHLIB); \
+	fi
+	
+$(SHLIB): $(LIBGN)
+
+$(LIBGN):
+	mkdir -p ../inst/libgnparser
+	curl -fsSL -o $(LIBGN) $(LIBURL)
+
+$(OBJECTS): libgnparser.h
+
+libgnparser.h:
+	curl -fsSLO $(APIURL)

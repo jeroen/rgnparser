@@ -8,3 +8,4 @@ Description: One paragraph description of what the package does as one
         or more full sentences.
 License: MIT
 RoxygenNote: 7.0.0
+StagedInstall: no
