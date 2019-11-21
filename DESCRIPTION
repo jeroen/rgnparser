@@ -1,0 +1,10 @@
+Package: rgnparser
+Type: Package
+Title: What the Package Does in One 'Title Case' Line
+Version: 0.0.1
+Author: Scott Chamberlain
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
+Description: One paragraph description of what the package does as one
+        or more full sentences.
+License: MIT
+RoxygenNote: 7.0.0
